@@ -6,6 +6,7 @@ on:
 
 jobs:
   job1:
+    needs: job2 
     runs-on: ubuntu-latest
     steps:
       - run: echo job1
@@ -26,6 +27,7 @@ jobs:
       - run: echo job4
 
   job5:
+    needs: [job3,job4]
     runs-on: ubuntu-latest
     steps:
       - run: echo job5
@@ -41,6 +43,7 @@ jobs:
       - run: echo job7
 
   job8:
+    needs: job5 
     runs-on: ubuntu-latest
     steps:
       - run: echo job8
