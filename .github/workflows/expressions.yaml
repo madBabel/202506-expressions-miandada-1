@@ -22,7 +22,6 @@ env:
 jobs:
   debug-check:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request'
     env:
       JOB_VAR: 'This is a job-level variable'
       OVERWRITTEN: 'Overwritten at job level'
@@ -66,7 +65,7 @@ jobs:
           EOF
 
       - name: "Bug Check"
-        if: github.event_name == 'pull_request' && contains(github.event.pull_request.title, 'fix')
+        if: ${{!cancelled() && github.event_name == 'pull_request' && contains(github.event.pull_request.title, 'fix')}}
         run: echo "This PR fixes a bug."
 
       - name: "Sleep and Cancel"
@@ -87,7 +86,7 @@ jobs:
         run: echo "A previous step failed."
 
       - name: "Print Always"
-        if: ${{ !cancelled() }}
+        if: ${{ aalways() }}
         run: echo "This step runs unless the workflow is cancelled."
 
       - name: "On Cancel"
