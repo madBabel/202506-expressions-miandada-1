@@ -21,3 +21,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo job4
+
+  job5:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo job5
+
+  job6:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo job6
+
+  job7:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo job7
+
+  job8:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo job8
