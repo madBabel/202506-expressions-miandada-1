@@ -1,5 +1,8 @@
 name: Dependency Jobs
-on: push
+on: 
+  - push
+  - workflow_dispatch
+  
 
 jobs:
   job1:
@@ -10,7 +13,7 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
-      - run: echo job3
+      - run: echo job2
 
   job3:
     runs-on: ubuntu-latest
